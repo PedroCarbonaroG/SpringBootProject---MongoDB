@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -31,8 +30,7 @@ public class UserController {
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Optional<User>> findById(@PathVariable String id) {
-        Optional<User> obj = userService.findById(id);
-        return ResponseEntity.ok().body(obj);
+    public ResponseEntity<UserDTO> findById(@PathVariable String id) {
+        return ResponseEntity.ok().body(new UserDTO(userService.findById(id)));
     }
 }

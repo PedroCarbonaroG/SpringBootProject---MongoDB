@@ -7,12 +7,12 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Document(collection = "users")
-    public class User implements Serializable {
+public class User implements Serializable {
 
-        @Id
-        private String id;
-        private String name;
-        private String email;
+    @Id
+    private String id;
+    private String name;
+    private String email;
 
     public User() {
     }
