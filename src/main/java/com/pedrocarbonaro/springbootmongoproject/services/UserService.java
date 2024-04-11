@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pedrocarbonaro.springbootmongoproject.domain.User;
+import com.pedrocarbonaro.springbootmongoproject.dto.UserDTO;
 
-import java.io.ObjectStreamException;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,5 +26,13 @@ public class UserService {
     public User findById(String id) {
         Optional<User> obj = userRepository.findById(id);
         return obj.orElseThrow(() -> new ObjectNotFoundException("Object id wasn't found!"));
+    }
+
+    public User insert(User user) {
+        return userRepository.insert(user);
+    }
+
+    public User fromDTO(UserDTO objDTO) {
+        return new User(objDTO.getId(), objDTO.getName(), objDTO.getEmail());
     }
 }
