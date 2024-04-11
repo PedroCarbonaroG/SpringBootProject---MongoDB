@@ -3,17 +3,16 @@ package com.pedrocarbonaro.springbootmongoproject.domain;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.annotation.processing.Generated;
 import java.io.Serializable;
 import java.util.Objects;
 
 @Document(collection = "users")
-public class User implements Serializable {
+    public class User implements Serializable {
 
-    @Id
-    private String id;
-    private String name;
-    private String email;
+        @Id
+        private String id;
+        private String name;
+        private String email;
 
     public User() {
     }
