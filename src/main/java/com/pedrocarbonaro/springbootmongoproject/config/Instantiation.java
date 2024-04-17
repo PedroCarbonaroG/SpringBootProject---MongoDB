@@ -1,6 +1,7 @@
 package com.pedrocarbonaro.springbootmongoproject.config;
 
 import com.pedrocarbonaro.springbootmongoproject.domain.Post;
+import com.pedrocarbonaro.springbootmongoproject.dto.AuthorDTO;
 import com.pedrocarbonaro.springbootmongoproject.repository.PostRepository;
 import com.pedrocarbonaro.springbootmongoproject.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,10 +36,11 @@ public class Instantiation implements CommandLineRunner {
         User alex = new User(null, "Alex Green", "alex@gmail.com");
         User bob = new User(null, "Bob Grey", "bob@gmail.com");
 
-        Post post1 = new Post(null, sdf.parse("21/03/2018"), "Let's trip!", "I'm coming to São Paulo, hugs!!", maria);
-        Post post2 = new Post(null, sdf.parse("23/03/2018"), "Good morning!", "i woke up happy today.", maria);
-
         userRepository.saveAll(Arrays.asList(maria, alex, bob));
+
+        Post post1 = new Post(null, sdf.parse("21/03/2018"), "Let's trip!", "I'm coming to São Paulo, hugs!!", new AuthorDTO(maria));
+        Post post2 = new Post(null, sdf.parse("23/03/2018"), "Good morning!", "i woke up happy today.", new AuthorDTO(maria));
+        
         postRepository.saveAll(Arrays.asList(post1, post2));
 
     }
