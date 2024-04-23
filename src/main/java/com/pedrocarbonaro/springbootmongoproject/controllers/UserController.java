@@ -1,5 +1,6 @@
 package com.pedrocarbonaro.springbootmongoproject.controllers;
 
+import com.pedrocarbonaro.springbootmongoproject.domain.Post;
 import com.pedrocarbonaro.springbootmongoproject.domain.User;
 
 import com.pedrocarbonaro.springbootmongoproject.dto.UserDTO;
@@ -33,6 +34,11 @@ public class UserController {
     @GetMapping(value = "/{id}")
     public ResponseEntity<UserDTO> findById(@PathVariable String id) {
         return ResponseEntity.ok().body(new UserDTO(userService.findById(id)));
+    }
+
+    @GetMapping(value = "/{id}/posts")
+    public ResponseEntity<List<Post>> findPosts(@PathVariable String id) {
+        return ResponseEntity.ok().body(userService.findById(id).getPosts());
     }
 
     @PostMapping
